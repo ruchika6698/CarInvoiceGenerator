@@ -1,0 +1,13 @@
+C:\Users\boss\source\repos\CarServiceInvoiceGenerator\CarService\bin\Debug\netcoreapp3.1\CarService.exe
+C:\Users\boss\source\repos\CarServiceInvoiceGenerator\CarService\bin\Debug\netcoreapp3.1\CarService.deps.json
+C:\Users\boss\source\repos\CarServiceInvoiceGenerator\CarService\bin\Debug\netcoreapp3.1\CarService.runtimeconfig.json
+C:\Users\boss\source\repos\CarServiceInvoiceGenerator\CarService\bin\Debug\netcoreapp3.1\CarService.runtimeconfig.dev.json
+C:\Users\boss\source\repos\CarServiceInvoiceGenerator\CarService\bin\Debug\netcoreapp3.1\CarService.dll
+C:\Users\boss\source\repos\CarServiceInvoiceGenerator\CarService\bin\Debug\netcoreapp3.1\CarService.pdb
+C:\Users\boss\source\repos\CarServiceInvoiceGenerator\CarService\obj\Debug\netcoreapp3.1\CarService.csprojAssemblyReference.cache
+C:\Users\boss\source\repos\CarServiceInvoiceGenerator\CarService\obj\Debug\netcoreapp3.1\CarService.csproj.CoreCompileInputs.cache
+C:\Users\boss\source\repos\CarServiceInvoiceGenerator\CarService\obj\Debug\netcoreapp3.1\CarService.AssemblyInfoInputs.cache
+C:\Users\boss\source\repos\CarServiceInvoiceGenerator\CarService\obj\Debug\netcoreapp3.1\CarService.AssemblyInfo.cs
+C:\Users\boss\source\repos\CarServiceInvoiceGenerator\CarService\obj\Debug\netcoreapp3.1\CarService.dll
+C:\Users\boss\source\repos\CarServiceInvoiceGenerator\CarService\obj\Debug\netcoreapp3.1\CarService.pdb
+C:\Users\boss\source\repos\CarServiceInvoiceGenerator\CarService\obj\Debug\netcoreapp3.1\CarService.genruntimeconfig.cache

@@ -1,4 +1,10 @@
-﻿using System.Collections.Generic;
+﻿///-----------------------------------------------------------------
+///   Class:       RideRepository
+///   Description: RideRepository class to calculate userId and users ride
+///   Author:      Ruchika                   Date: 30/4/2020
+///-----------------------------------------------------------------
+
+using System.Collections.Generic;
 
 namespace CarService
 {
@@ -11,14 +17,14 @@ namespace CarService
         /// </summary>
         public RideRepository()
         {
-            this.userRides = new Dictionary<string, List<Ride>>();
+            userRides = new Dictionary<string, List<Ride>>();
         }
         /// <summary>
         /// Method to add rides
         /// </summary>
         public void AddRides(string userID, Ride[] rides)
         {
-            bool rideList = this.userRides.ContainsKey(userID);
+            bool rideList = userRides.ContainsKey(userID);
             //if rideList is false
             if (rideList == false)
             {
@@ -26,7 +32,7 @@ namespace CarService
                 //add rides
                 list.AddRange(rides);
                 //add userId and Rides
-                this.userRides.Add(userID, list);
+                userRides.Add(userID, list);
             }
         }
         /// <summary>
@@ -34,7 +40,7 @@ namespace CarService
         /// </summary>
         public Ride[] GetRides(string userID)
         {
-            return this.userRides[userID].ToArray();
+            return userRides[userID].ToArray();
         }
     }
 }

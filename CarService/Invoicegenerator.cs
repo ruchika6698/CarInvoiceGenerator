@@ -1,4 +1,10 @@
-﻿using System;
+﻿///-----------------------------------------------------------------
+///   Class:       Invoicegenerator
+///   Description: Calculate TotalFare for diffent journey type
+///   Author:      Ruchika                   Date: 30/4/2020
+///-----------------------------------------------------------------
+
+using System;
 
 namespace CarService
 {
@@ -14,7 +20,6 @@ namespace CarService
         public int costPerMinutePremium = 2;
         public int minimumFarePremium = 20;
         public double totalFare = 0;
-        public double totalCost = 0;
         public int numberOfRides = 0;
         public double averageFare = 0;
        
@@ -54,11 +59,10 @@ namespace CarService
                 return minimumFareNormal;
             }
             //calculate Total Fare for premium journey type
-            double totalCost = (distance * costPerkilometerPremium) + (time * costPerMinutePremium);
             //if the totalcost is greater than minimum fare then return totalfare minimumFarePremium
-            if (totalCost > minimumFarePremium)
+            if (((distance * costPerkilometerPremium) + (time * costPerMinutePremium)) > minimumFarePremium)
             {
-                return totalCost;
+                return (distance * costPerkilometerPremium) + (time * costPerMinutePremium);
             }
             //if the totalfare is less than minimum fare then return totalfare
             return minimumFarePremium;
@@ -71,8 +75,9 @@ namespace CarService
             //calculate Total Fare for multipme rides
             foreach (var total in rides)
             {
-                totalFare = totalFare + TotalFare(total.rideType, total.distance, total.time);
+                totalFare += TotalFare(total.rideType, total.distance, total.time);
             }
+            //calculate number of rides
             numberOfRides = rides.Length;
             //calculate aggregate of total fare
             averageFare = totalFare / numberOfRides;

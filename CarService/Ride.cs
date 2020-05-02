@@ -1,4 +1,10 @@
-﻿using System;
+﻿///-----------------------------------------------------------------
+///   Class:       Ride
+///   Description: create constructor for ridetype,distance and time
+///   Author:      Ruchika                   Date: 30/4/2020
+///-----------------------------------------------------------------
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 

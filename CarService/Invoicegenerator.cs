@@ -45,6 +45,10 @@ namespace CarService
         /// <summary>
         /// Method to calculate total fare of car
         /// </summary>
+        /// <param name="journeytype"> Type of Journey </param>
+        /// <param name="distance"> Distance </param>
+        /// <param name="time"> Time </param>
+        /// <returns> Total Fare </returns>
         public double TotalFare(string journeytype,double distance, double time)
         {
             if (journeytype == "normal")
@@ -70,6 +74,8 @@ namespace CarService
         /// <summary>
         /// Method to calculate total fare of car with multiple rides
         /// </summary>
+        /// <param name="rides"> Array to store rides </param>
+        /// <returns> Calculate Monthly Fare </returns>
         public double CalculateMonthlyFare(Ride[] rides)
         {
             //calculate Total Fare for multipme rides

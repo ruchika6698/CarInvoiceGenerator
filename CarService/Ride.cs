@@ -18,6 +18,10 @@ namespace CarService
         /// <summary>
         /// constructor for Ride class
         /// </summary>
+        /// <param name="rideType"> Ride types </param>
+        /// <param name="distance"> Distance </param>
+        /// <param name="time"> Time </param>
+        /// <returns> Total Fare </returns>
         public Ride(string rideType, double distance, double time)
         {
             this.rideType = rideType;

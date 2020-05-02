@@ -22,6 +22,9 @@ namespace CarService
         /// <summary>
         /// Method to add rides
         /// </summary>
+        /// <param name="userID"> User Id </param>
+        /// <param name="rides"> Rides </param>
+        /// <returns> AddRides </returns>
         public void AddRides(string userID, Ride[] rides)
         {
             bool rideList = userRides.ContainsKey(userID);
@@ -38,6 +41,8 @@ namespace CarService
         /// <summary>
         /// Method to get rides of user
         /// </summary>
+        /// <param name="userID"> UserID </param>
+        /// <returns> GetRides </returns>
         public Ride[] GetRides(string userID)
         {
             return userRides[userID].ToArray();

@@ -13,12 +13,12 @@ namespace CarService
         /// <summary>
         /// constants values for costperkm,costpermin,minimumfare
         /// </summary>
-        public int costPerkilometerNormal = 10;
-        public int costPerMinuteNormal = 1;
-        public int minimumFareNormal = 5;
-        public int costPerkilometerPremium = 15;
-        public int costPerMinutePremium = 2;
-        public int minimumFarePremium = 20;
+        public int Costperkilometernormal = 10;
+        public int Costperminutenormal = 1;
+        public int Minimumfarenormal = 5;
+        public int Costperkilometerpremium = 15;
+        public int Costperminutepremium = 2;
+        public int Minimumfarepremium = 20;
         public double totalFare = 0;
         public int numberOfRides = 0;
         public double averageFare = 0;
@@ -53,24 +53,21 @@ namespace CarService
         {
             if (journeytype == "normal")
             {
-                //calculate Total Fare for normal journey type
                 //if the totalfare is greater than minimum fare then return totalfare
-                if (((distance * costPerkilometerNormal) + (time * costPerMinuteNormal)) > minimumFareNormal)
+                if (((distance * Costperkilometernormal) + (time * Costperminutenormal)) > Minimumfarenormal)
                 {
-                    return (distance * costPerkilometerNormal) + (time * costPerMinuteNormal);
+                    return (distance * Costperkilometernormal) + (time * Costperminutenormal);
                 }
-                //if the totalfare is less than minimum fare then return totalfare
-                return minimumFareNormal;
+                return Minimumfarenormal;
             }
-            //calculate Total Fare for premium journey type
             //if the totalcost is greater than minimum fare then return totalfare minimumFarePremium
-            if (((distance * costPerkilometerPremium) + (time * costPerMinutePremium)) > minimumFarePremium)
+            if (((distance * Costperkilometerpremium) + (time * Costperminutepremium)) > Minimumfarepremium)
             {
-                return (distance * costPerkilometerPremium) + (time * costPerMinutePremium);
+                return (distance * Costperkilometerpremium) + (time * Costperminutepremium);
             }
-            //if the totalfare is less than minimum fare then return totalfare
-            return minimumFarePremium;
+            return Minimumfarepremium;
         }
+
         /// <summary>
         /// Method to calculate total fare of car with multiple rides
         /// </summary>
@@ -85,9 +82,8 @@ namespace CarService
             }
             //calculate number of rides
             numberOfRides = rides.Length;
-            //calculate aggregate of total fare
+            //calculate aggregate of monthly fare
             averageFare = totalFare / numberOfRides;
-            //return a calculate totalfare
             return totalFare;
         }
     }

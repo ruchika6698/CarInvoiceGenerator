@@ -19,6 +19,7 @@ namespace CarService
         {
             userRides = new Dictionary<string, List<Ride>>();
         }
+
         /// <summary>
         /// Method to add rides
         /// </summary>
@@ -38,6 +39,7 @@ namespace CarService
                 userRides.Add(userID, list);
             }
         }
+
         /// <summary>
         /// Method to get rides of user
         /// </summary>

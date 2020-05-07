@@ -13,14 +13,14 @@ namespace CarService
         /// <summary>
         /// constants values for costperkm,costpermin,minimumfare
         /// </summary>
-        public int Costperkilometernormal = 10;
-        public int Costperminutenormal = 1;
-        public int Minimumfarenormal = 5;
-        public int Costperkilometerpremium = 15;
-        public int Costperminutepremium = 2;
-        public int Minimumfarepremium = 20;
+        public const int Costperkilometernormal = 10;
+        public const int Costperminutenormal = 1;
+        public const int Minimumfarenormal = 5;
+        public const int Costperkilometerpremium = 15;
+        public const int Costperminutepremium = 2;
+        public const int Minimumfarepremium = 20;
         public double totalFare = 0;
-        public int numberOfRides = 0;
+        public int numberofRides = 0;
         public double averageFare = 0;
        
         /// <summary>
@@ -51,21 +51,29 @@ namespace CarService
         /// <returns> Total Fare </returns>
         public double TotalFare(string journeytype,double distance, double time)
         {
-            if (journeytype == "normal")
+            try
             {
-                //if the totalfare is greater than minimum fare then return totalfare
-                if (((distance * Costperkilometernormal) + (time * Costperminutenormal)) > Minimumfarenormal)
+                if (journeytype == "normal")
                 {
-                    return (distance * Costperkilometernormal) + (time * Costperminutenormal);
+                    //if the totalfare is greater than minimum fare then return totalfare
+                    if (((distance * Costperkilometernormal) + (time * Costperminutenormal)) > Minimumfarenormal)
+                    {
+                        return (distance * Costperkilometernormal) + (time * Costperminutenormal);
+                    }
+                    return Minimumfarenormal;
                 }
-                return Minimumfarenormal;
+                //if the totalcost is greater than minimum fare then return totalfare minimumFarePremium
+                if (((distance * Costperkilometerpremium) + (time * Costperminutepremium)) > Minimumfarepremium)
+                {
+                    return (distance * Costperkilometerpremium) + (time * Costperminutepremium);
+                }
+                return Minimumfarepremium;
             }
-            //if the totalcost is greater than minimum fare then return totalfare minimumFarePremium
-            if (((distance * Costperkilometerpremium) + (time * Costperminutepremium)) > Minimumfarepremium)
+            catch(Exception e)
             {
-                return (distance * Costperkilometerpremium) + (time * Costperminutepremium);
+                throw new Exception(e.Message);
             }
-            return Minimumfarepremium;
+            
         }
 
         /// <summary>
@@ -75,16 +83,23 @@ namespace CarService
         /// <returns> Calculate Monthly Fare </returns>
         public double CalculateMonthlyFare(Ride[] rides)
         {
-            //calculate Total Fare for multipme rides
-            foreach (var total in rides)
+            try
             {
-                totalFare += TotalFare(total.rideType, total.distance, total.time);
+                //calculate Total Fare for multipme rides
+                foreach (var total in rides)
+                {
+                    totalFare += TotalFare(total.rideType, total.distance, total.time);
+                }
+                //calculate number of rides
+                numberofRides = rides.Length;
+                //calculate aggregate of monthly fare
+                averageFare = totalFare / numberofRides;
+                return totalFare;
             }
-            //calculate number of rides
-            numberOfRides = rides.Length;
-            //calculate aggregate of monthly fare
-            averageFare = totalFare / numberOfRides;
-            return totalFare;
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }

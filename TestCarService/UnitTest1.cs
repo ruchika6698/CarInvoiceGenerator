@@ -19,8 +19,15 @@ namespace TestCarService
         [Test]
         public void GivenDistanceAndTime_whenInvoiceGeneratorMust_ReturntotalFareForJourney()
         {
-            double totalfare = invoicegenerator.TotalFare("normal",15, 20);
-            Assert.AreEqual(170, totalfare);
+            try
+            {
+                double totalfare = invoicegenerator.TotalFare("normal", 15, 20);
+                Assert.AreEqual(170, totalfare);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         /// <summary>
@@ -29,14 +36,21 @@ namespace TestCarService
         [Test]
         public void GivenDistanceAndTime_whenTakeMultipleRides_ReturnCalculateAggregateTotal()
         {
-            //add number of rides
-            Ride[] ride = {
+            try
+            {
+                //add number of rides
+                Ride[] ride = {
                 new Ride("normal",50,20),
                 new Ride("normal",10,30)
-            };
-            //calculate total fare
-            double totalfare = invoicegenerator.CalculateMonthlyFare(ride);
-            Assert.AreEqual(650, totalfare);
+                };
+                //calculate total fare
+                double totalfare = invoicegenerator.CalculateMonthlyFare(ride);
+                Assert.AreEqual(650, totalfare);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         /// <summary>
@@ -45,22 +59,29 @@ namespace TestCarService
         [Test]
         public void GivenDistanceAndTime_whenTakeMultipleRides_ReturnEnhancedInVoice()
         {
-            Invoicegenerator carride = new Invoicegenerator();
-            //add number of rides
-            Ride[] ride = {
+            try
+            {
+                Invoicegenerator carride = new Invoicegenerator();
+                //add number of rides
+                Ride[] ride = {
                 new Ride("normal",10,12),
                 new Ride("normal",10,14),
                 new Ride("normal",20,18)
-            };
-            //calculate total fare
-            double totalfare = carride.CalculateMonthlyFare(ride);
-            //calculate number of rides
-            int totalRides = carride.numberOfRides;
-            //calculate average fare for rides
-            double averageFare = Math.Round(carride.Aggregate, 2);
-            Assert.AreEqual(444, totalfare);
-            Assert.AreEqual(3, totalRides);
-            Assert.AreEqual(148.0, averageFare);
+                };
+                //calculate total fare
+                double totalfare = carride.CalculateMonthlyFare(ride);
+                //calculate number of rides
+                int totalRides = carride.numberofRides;
+                //calculate average fare for rides
+                double averageFare = Math.Round(carride.Aggregate, 2);
+                Assert.AreEqual(444, totalfare);
+                Assert.AreEqual(3, totalRides);
+                Assert.AreEqual(148.0, averageFare);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         /// <summary>
@@ -69,21 +90,28 @@ namespace TestCarService
         [Test]
         public void GivenUserId_InvoiceServiceGetsListOfRidesFromRideRepository_ReturnInvoice()
         {
-            //add user rides using user ID
-            string userId = "rajesh.sharma@gmail.com";
-            //add number of rides
-            Ride[] ride = {
+            try
+            {
+                //add user rides using user ID
+                string userId = "rajesh.sharma@gmail.com";
+                //add number of rides
+                Ride[] ride = {
                 new Ride("normal",20,15),
                 new Ride("normal",10,25),
                 new Ride("normal",12,40)
-            };
-            RideRepository rideRepository = new RideRepository();
-            //add userID and rides
-            rideRepository.AddRides(userId, ride);
-            Invoicegenerator carride = new Invoicegenerator();
-            //calculate total cab fare for all rides
-            double ridetotalFare = carride.CalculateMonthlyFare(rideRepository.GetRides(userId));
-            Assert.AreEqual(500, ridetotalFare);
+                };
+                RideRepository rideRepository = new RideRepository();
+                //add userID and rides
+                rideRepository.AddRides(userId, ride);
+                Invoicegenerator carride = new Invoicegenerator();
+                //calculate total cab fare for all rides
+                double ridetotalFare = carride.CalculateMonthlyFare(rideRepository.GetRides(userId));
+                Assert.AreEqual(500, ridetotalFare);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
         /// <summary>
@@ -92,22 +120,29 @@ namespace TestCarService
         [Test]
         public void GivenUserId_whenNormalandPremiumJoourney_ReturnTotalFare()
         {
-            //add user rides using user ID
-            string userId = "rajesh.sharma@gmail.com";
-            //add number of rides
-            Ride[] ride = {
+            try
+            {
+                //add user rides using user ID
+                string userId = "rajesh.sharma@gmail.com";
+                //add number of rides
+                Ride[] ride = {
                 new Ride("premium",50,15),
                 new Ride("normal",30,25),
                 new Ride("premium",60,40),
                 new Ride("normal",12,40)
-            };
-            RideRepository rideRepository = new RideRepository();
-            //add userID and rides
-            rideRepository.AddRides(userId, ride);
-            Invoicegenerator carride = new Invoicegenerator();
-            //calculate total cab fare for all rides
-            double ridetotalFare = carride.CalculateMonthlyFare(rideRepository.GetRides(userId));
-            Assert.AreEqual(2245, ridetotalFare);
+                };
+                RideRepository rideRepository = new RideRepository();
+                //add userID and rides
+                rideRepository.AddRides(userId, ride);
+                Invoicegenerator carride = new Invoicegenerator();
+                //calculate total cab fare for all rides
+                double ridetotalFare = carride.CalculateMonthlyFare(rideRepository.GetRides(userId));
+                Assert.AreEqual(2245, ridetotalFare);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
     }
 }
